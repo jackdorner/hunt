@@ -5,4 +5,14 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(hunt main.cpp
         MapArea.cpp
-        MapArea.h)
+        MapArea.h
+        MapAreaWithKey.cpp
+        MapAreaWithKey.h
+        MapAreaWithChest.cpp
+        MapAreaWithChest.h
+        MapAreaWithQuicksand.cpp
+        MapAreaWithQuicksand.h
+        MapAreaWithCoconuts.cpp
+        MapAreaWithCoconuts.h
+        MapAreaWithPlanks.cpp
+        MapAreaWithPlanks.h)
