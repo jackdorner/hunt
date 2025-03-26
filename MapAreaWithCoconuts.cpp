@@ -11,4 +11,6 @@ MapAreaWithCoconuts::MapAreaWithCoconuts(int xCoord, int yCoord)
 string MapAreaWithCoconuts::getText() const {
   return "You hear a thunk, what's that?";
 }
-
+char MapAreaWithCoconuts::getSymbol() const {
+  return '%';
+}

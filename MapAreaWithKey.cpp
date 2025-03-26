@@ -24,4 +24,7 @@ bool MapAreaWithKey::pickUpItem() {
   }
   return false;
 }
+char MapAreaWithKey::getSymbol() const {
+  return (keyTaken ? '.' : '*');
+}
 

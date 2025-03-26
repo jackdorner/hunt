@@ -15,6 +15,8 @@ public:
   MapAreaWithPlanks(int xCoord, int yCoord);
 
   bool pickUpItem() override;
+
+  char getSymbol() const override;
 };
 
 #endif // MAPAREAWITHPLANKS_H

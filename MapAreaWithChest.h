@@ -17,6 +17,8 @@ public:
   std::string getText() const override;
 
   void openChest(bool hasKey);
+  char getSymbol() const override;
+
 };
 
 #endif // MAPAREAWITHCHEST_H
