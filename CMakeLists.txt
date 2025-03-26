@@ -15,4 +15,6 @@ add_executable(hunt main.cpp
         MapAreaWithCoconuts.cpp
         MapAreaWithCoconuts.h
         MapAreaWithPlanks.cpp
-        MapAreaWithPlanks.h)
+        MapAreaWithPlanks.h
+        Game.h
+        Game.cpp)

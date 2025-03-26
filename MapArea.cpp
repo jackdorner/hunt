@@ -21,3 +21,11 @@ bool MapArea::pickUpItem() {
 bool MapArea::coverWithPlank() {
   return false;
 }
+
+std::string MapArea::getText() const {
+  return NULL;
+}
+
+char MapArea::getSymbol() const {
+  return '.';
+}

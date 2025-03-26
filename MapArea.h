@@ -20,7 +20,8 @@ public:
   int getLocationX() const;
   int getLocationY() const;
 
-  virtual std::string getText() const = 0;
+  virtual std::string getText() const;
+  virtual char getSymbol() const;
   virtual bool pickUpItem();
   virtual bool coverWithPlank();
 };
