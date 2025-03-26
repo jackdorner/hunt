@@ -22,7 +22,13 @@ public:
 
 private:
   char getInput();
-  bool move();
+  bool moveNorth();
+  bool moveSouth();
+  bool moveEast();
+  bool moveWest();
+  void printSurrounding();
+  void printHelp();
+  void printMap();
   MapArea* getMapArea();
 };
 
