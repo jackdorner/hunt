@@ -16,6 +16,7 @@ public:
   MapAreaWithQuicksand(int xCoord, int yCoord);
   std::string getText() const override;
   bool coverWithPlank() override;
+  char getSymbol() const override;
 };
 
 #endif // MAPAREAWITHQUICKSAND_H

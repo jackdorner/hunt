@@ -30,3 +30,7 @@ void MapAreaWithChest::openChest(bool hasKey) {
     cout << "You need a key to open the chest.\n";
   }
 }
+char MapAreaWithChest::getSymbol() const {
+  // Return '$' if the chest is unopened, or '.' if opened.
+  return (chestOpened ? '.' : '$');
+}

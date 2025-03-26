@@ -12,6 +12,8 @@ class MapAreaWithCoconuts : public MapArea {
 public:
   MapAreaWithCoconuts(int xCoord, int yCoord);
   std::string getText() const override;
+  char getSymbol() const override;
+
 };
 
 #endif // MAPAREAWITHCOCONUTS_H

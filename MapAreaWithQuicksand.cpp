@@ -25,4 +25,6 @@ bool MapAreaWithQuicksand::coverWithPlank() {
   }
   return false;
 }
-
+char MapAreaWithQuicksand::getSymbol() const {
+  return (covered ? '.' : 'O');
+}

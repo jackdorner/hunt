@@ -16,6 +16,9 @@ public:
   MapAreaWithKey(int xCoord, int yCoord);
   std::string getText() const override;
   bool pickUpItem() override;
+
+  char getSymbol() const override;
+
 };
 
 #endif // MAPAREAWITHKEY_H

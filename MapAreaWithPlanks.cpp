@@ -19,4 +19,7 @@ bool MapAreaWithPlanks::pickUpItem() {
   }
   return false;
 }
+char MapAreaWithPlanks::getSymbol() const {
+  return (plankTaken ? '.' : '|');
+}
 
