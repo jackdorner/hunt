@@ -7,28 +7,33 @@
 
 #include <string>
 #include "MapArea.h"
+#include "Player.h"
 
 class Game {
-    int numCoconutAreas =3;
-    int numQuicksandAreas = 3;
-    int numPlankAreas = 3;
-    int numKeyAreas = 2;
-    int numChestAreas = 1;
-    int numRegularAreas = 37;
-    MapArea *cells[7][7];
 public:
   Game();
   void startGame();
 
 private:
+  bool over = false;
+  int numCoconutAreas =3;
+  int numQuicksandAreas = 3;
+  int numPlankAreas = 3;
+  int numKeyAreas = 2;
+  int numChestAreas = 1;
+  int numRegularAreas = 37;
+  MapArea *cells[7][7];
+  Player* player;
   char getInput();
   bool moveNorth();
   bool moveSouth();
   bool moveEast();
   bool moveWest();
+  void move(MapArea* area);
   void printSurrounding();
   void printHelp();
   void printMap();
+  void setStartLocation();
   MapArea* getMapArea();
 };
 
