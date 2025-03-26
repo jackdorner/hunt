@@ -163,7 +163,15 @@ void Game::move(MapArea *area) {
       player->pickupKey();
       break;
     case '%':
-      //FIXME
+      char nextLocSymbol;
+      int nextx;
+      int nexty;
+      do {
+        nextx = rand() % 7;
+        nexty = rand() % 7;
+        nextLocSymbol = cells[nextx][nexty]->getSymbol();
+      } while (nextLocSymbol != '.');
+      player->setLocation(nextx, nexty);
     case '.':
       break;
   }
