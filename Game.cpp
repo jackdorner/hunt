@@ -11,8 +11,8 @@
 using namespace std;
 
 Game::Game() {
-    for (int j = 0; j < 6; j++) {
-    for (int i = 0; i < 6; i ++) {
+    for (int j = 0; j < 7; j++) {
+    for (int i = 0; i < 7; i ++) {
       cells[i][j] = new MapArea(i, j);
     }
   }
@@ -128,7 +128,23 @@ void Game::move(MapArea *area) {
 }
 
 void Game::printSurrounding() {
-
+  int currx = player->getXLocation();
+  int curry = player->getYLocation();
+  int leftx = currx - 1;
+  int rightx = currx + 1;
+  int topy = curry - 1;
+  int bottomy = curry + 1;
+  if (leftx < 0) {
+    leftx = 0;
+  }
+  if (topy < 0) {
+    topy = 0;
+  }
+  for (int j = topy; j <= bottomy && j < 7; j++) {
+    for (int i = leftx; i <= rightx && i < 7; i++) {
+      cout << cells[i][j]->getText();
+    }
+  }
 }
 
 void Game::printHelp() {
