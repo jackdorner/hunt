@@ -17,4 +17,6 @@ add_executable(hunt main.cpp
         MapAreaWithPlanks.cpp
         MapAreaWithPlanks.h
         Game.h
-        Game.cpp)
+        Game.cpp
+        Player.cpp
+        Player.h)

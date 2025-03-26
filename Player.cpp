@@ -23,3 +23,5 @@ void Player::pickupPlank() {
 void Player::pickupKey() {
   hasKey = true;
 }
+
+Player::Player() {}
