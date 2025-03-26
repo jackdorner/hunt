@@ -12,6 +12,9 @@ public:
   void setLocation(int newx, int newy);
   void pickupPlank();
   void pickupKey();
+  bool hasPlank();
+  void placePlank();
+  bool holdsKey();
 
 private:
     int x;

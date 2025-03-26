@@ -25,3 +25,15 @@ void Player::pickupKey() {
 }
 
 Player::Player() {}
+
+bool Player::hasPlank() {
+  return numPlanks != 0;
+}
+
+bool Player::holdsKey() {
+  return hasKey;
+}
+
+void Player::placePlank() {
+  numPlanks--;
+}

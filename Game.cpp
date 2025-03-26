@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <random>
 #include <cctype>
+#include <vector>
 #include "MapArea.h"
 #include "MapAreaWithChest.h"
 #include "MapAreaWithCoconuts.h"
@@ -136,7 +137,36 @@ bool Game::moveWest() {
 }
 
 void Game::move(MapArea *area) {
-
+  char type = area->getSymbol();
+  switch (type) {
+    case '|':
+      area->pickUpItem();
+      player->pickupPlank();
+      break;
+    case '$':
+      if (player->holdsKey()) {
+        cout << "You open the chest and claim the treasure!";
+        over = true;
+      }
+      break;
+    case 'O':
+      if (player->hasPlank()) {
+        player->placePlank();
+        area->coverWithPlank();
+      } else {
+        cout << "You died in quicksand";
+        over = true;
+      }
+      break;
+    case '*':
+      area->pickUpItem();
+      player->pickupKey();
+      break;
+    case '%':
+      //FIXME
+    case '.':
+      break;
+  }
 }
 
 void Game::printSurrounding() {
