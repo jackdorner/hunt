@@ -3,6 +3,7 @@
 //
 
 #include "Game.h"
+#include "Player.h"
 #include <iostream>
 #include <random>
 #include <cctype>
@@ -10,12 +11,13 @@
 using namespace std;
 
 Game::Game() {
-
-  for (int j = 0; j < 6; j++) {
+    for (int j = 0; j < 6; j++) {
     for (int i = 0; i < 6; i ++) {
       cells[i][j] = new MapArea(i, j);
     }
   }
+  player = new Player();
+  setStartLocation();
 }
 
 char Game::getInput() {
@@ -37,7 +39,6 @@ char Game::getInput() {
 }
 
 void Game::startGame() {
-  bool over = false;
   while (!over) {
     char input = getInput();
     switch (input) {
@@ -83,18 +84,46 @@ void Game::startGame() {
 }
 
 bool Game::moveNorth() {
-
+  if (player->getYLocation() != 0) {
+    player->setLocation(player->getXLocation(), player->getYLocation() - 1);
+    move(cells[player->getXLocation()][player->getYLocation()]);
+    return true;
+  } else {
+    return false;
+  }
 }
 
 bool Game::moveSouth() {
-
+  if (player->getYLocation() != 6) {
+    player->setLocation(player->getXLocation(), player->getYLocation() + 1);
+    move(cells[player->getXLocation()][player->getYLocation()]);
+    return true;
+  } else {
+    return false;
+  }
 }
 
 bool Game::moveEast() {
-
+  if (player->getXLocation() != 6) {
+    player->setLocation(player->getXLocation() + 1, player->getYLocation());
+    move(cells[player->getXLocation()][player->getYLocation()]);
+    return true;
+  } else {
+    return false;
+  }
 }
 
 bool Game::moveWest() {
+  if (player->getXLocation() != 0) {
+    player->setLocation(player->getXLocation() - 1, player->getYLocation());
+    move(cells[player->getXLocation()][player->getYLocation()]);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+void Game::move(MapArea *area) {
 
 }
 
@@ -124,7 +153,7 @@ void Game::printMap() {
   cout << endl;
 }
 
-MapArea *Game::getMapArea() {
+MapArea *Game::getMapArea() { //FIXME
   std::random_device rd;
   std::mt19937 gen(rd());
 
@@ -137,4 +166,8 @@ MapArea *Game::getMapArea() {
   if (random_number == 0) {
 
   }
+}
+
+void Game::setStartLocation() {
+  player->setLocation(0,0); //FIXME
 }
