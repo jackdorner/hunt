@@ -5,19 +5,31 @@
 #include "Game.h"
 #include "Player.h"
 #include <iostream>
+#include <algorithm>
 #include <random>
 #include <cctype>
+#include "MapArea.h"
+#include "MapAreaWithChest.h"
+#include "MapAreaWithCoconuts.h"
+#include "MapAreaWithKey.h"
+#include "MapAreaWithPlanks.h"
+#include "MapAreaWithQuicksand.h"
 
 using namespace std;
 
 Game::Game() {
+  player = new Player();
+  std::vector<char> chars = {'|', '|', '|', '$', 'O', 'O', 'O', '*', '*', '%', '%', '%', '+'};
+  chars.resize(49, '.');
+  int index = 0;
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::shuffle(chars.begin(), chars.end(), gen);
     for (int j = 0; j < 7; j++) {
     for (int i = 0; i < 7; i ++) {
-      cells[i][j] = new MapArea(i, j);
+      cells[i][j] = getMapArea(chars[index++], i, j);
     }
   }
-  player = new Player();
-  setStartLocation();
 }
 
 char Game::getInput() {
@@ -160,30 +172,36 @@ void Game::printMap() {
           "+ = Player\n"
           "% = Falling coconut\n"
           ". = Empty area\n\n";
-  for (int j = 0; j < 6; j++) {
-    for (int i = 0; i < 6; i ++) {
-      cout << cells[i][j]->getSymbol();
+  for (int j = 0; j < 7; j++) {
+    for (int i = 0; i < 7; i ++) {
+      if (i == player->getXLocation() && j == player->getYLocation()) {
+        cout << '+';
+      } else {
+        cout << cells[i][j]->getSymbol();
+      }
     }
     cout << endl;
   }
   cout << endl;
 }
 
-MapArea *Game::getMapArea() { //FIXME
-  std::random_device rd;
-  std::mt19937 gen(rd());
-
-  // Define the distribution
-  std::uniform_int_distribution<> distr(0, 6);
-
-  // Generate a random number within the range
-  int random_number = distr(gen);
-
-  if (random_number == 0) {
-
+MapArea *Game::getMapArea(char type, int i, int j) {
+  switch (type) {
+    case '|':
+      return new MapAreaWithPlanks(i, j);
+    case '$':
+      return new MapAreaWithChest(i, j);
+    case 'O':
+      return new MapAreaWithQuicksand(i, j);
+    case '*':
+      return new MapAreaWithKey(i, j);
+    case '%':
+      return new MapAreaWithCoconuts(i, j);
+    case '.':
+      return new MapArea(i, j);
+    case '+':
+      player->setLocation(i,j);
+      return new MapArea(i, j);
   }
-}
-
-void Game::setStartLocation() {
-  player->setLocation(0,0); //FIXME
+  return nullptr;
 }

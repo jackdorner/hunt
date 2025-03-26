@@ -16,12 +16,6 @@ public:
 
 private:
   bool over = false;
-  int numCoconutAreas =3;
-  int numQuicksandAreas = 3;
-  int numPlankAreas = 3;
-  int numKeyAreas = 2;
-  int numChestAreas = 1;
-  int numRegularAreas = 37;
   MapArea *cells[7][7];
   Player* player;
   char getInput();
@@ -33,8 +27,7 @@ private:
   void printSurrounding();
   void printHelp();
   void printMap();
-  void setStartLocation();
-  MapArea* getMapArea();
+  MapArea* getMapArea(char type, int i, int j);
 };
 
 #endif
