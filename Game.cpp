@@ -140,12 +140,13 @@ void Game::move(MapArea *area) {
   char type = area->getSymbol();
   switch (type) {
     case '|':
+      //cout << "You picked up a plank" << endl;
       area->pickUpItem();
       player->pickupPlank();
       break;
     case '$':
       if (player->holdsKey()) {
-        cout << "You open the chest and claim the treasure!";
+        cout << "You open the chest and claim the treasure!" << endl;
         over = true;
       }
       break;
@@ -154,15 +155,17 @@ void Game::move(MapArea *area) {
         player->placePlank();
         area->coverWithPlank();
       } else {
-        cout << "You died in quicksand";
+        cout << "You died in quicksand" << endl;
         over = true;
       }
       break;
     case '*':
       area->pickUpItem();
       player->pickupKey();
+      //cout << "You picked up a key" << endl;
       break;
     case '%':
+      cout << "THUNK!" << endl;
       char nextLocSymbol;
       int nextx;
       int nexty;
@@ -191,8 +194,10 @@ void Game::printSurrounding() {
     topy = 0;
   }
   for (int j = topy; j <= bottomy && j < 7; j++) {
-    for (int i = leftx; i <= rightx && i < 7; i++) {
-      cout << cells[i][j]->getText();
+    for (int i = leftx; i <= rightx && i < 7 && !over; i++) {
+      if (cells[i][j]->getText() != "none") {
+        cout << cells[i][j]->getText();
+      }
     }
   }
 }

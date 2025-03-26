@@ -23,7 +23,7 @@ bool MapArea::coverWithPlank() {
 }
 
 std::string MapArea::getText() const {
-  return NULL;
+  return "none";
 }
 
 char MapArea::getSymbol() const {
