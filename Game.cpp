@@ -196,7 +196,7 @@ void Game::printSurrounding() {
   for (int j = topy; j <= bottomy && j < 7; j++) {
     for (int i = leftx; i <= rightx && i < 7 && !over; i++) {
       if (cells[i][j]->getText() != "none") {
-        cout << cells[i][j]->getText();
+        cout << cells[i][j]->getText() << " ";
       }
     }
   }
